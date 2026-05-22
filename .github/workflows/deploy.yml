@@ -14,6 +14,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Stamp version info
+        run: |
+          echo "window.WACTC_VERSION = {
+            commit: '$(git rev-parse --short HEAD)',
+            branch: '$(git rev-parse --abbrev-ref HEAD)',
+            deployedAt: '$(date -u "+%Y-%m-%d %H:%M UTC")',
+            message: '$(git log -1 --pretty=format:"%s" | sed "s/'/\\\'/g")'
+          };" > assets/js/version.js
+
       - name: Deploy via FTP to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
