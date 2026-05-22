@@ -384,6 +384,18 @@
       },
       "class": "Machine Shop",
       "is_active": true
+    },
+    {
+      "product_id": "SP24",
+      "name": "Machine Shop Buttondown",
+      "colors": "Charcoal",
+      "pricing": {
+        "S-XL": 27.0,
+        "2X": 29.0,
+        "3X": 30.0
+      },
+      "class": "Machine Shop",
+      "is_active": true
     }
   ]
 }
