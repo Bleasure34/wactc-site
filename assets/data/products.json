@@ -110,18 +110,6 @@
       "is_active": true
     },
     {
-      "product_id": "SP24",
-      "name": "Machine Shop Buttondown",
-      "colors": "Charcoal",
-      "pricing": {
-        "S-XL": 27.0,
-        "2X": 29.0,
-        "3X": 30.0
-      },
-      "class": "Machine Shop",
-      "is_active": true
-    },
-    {
       "product_id": "436MP",
       "name": "Masonry Pocket Polo",
       "colors": "Maroon",
@@ -371,6 +359,30 @@
         "3X": 18.0
       },
       "class": "Welding",
+      "is_active": true
+    },
+    {
+      "product_id": "PA_W809",
+      "name": "Machine Shop SS Buttondown",
+      "colors": "Dark Green",
+      "pricing": {
+        "S-XL": 28.0,
+        "2X": 30.0,
+        "3X": 31.0
+      },
+      "class": "Machine Shop",
+      "is_active": true
+    },
+    {
+      "product_id": "PA_W808",
+      "name": "Machine Shop LS Buttondown",
+      "colors": "Dark Green",
+      "pricing": {
+        "S-XL": 30.0,
+        "2X": 32.0,
+        "3X": 33.0
+      },
+      "class": "Machine Shop",
       "is_active": true
     }
   ]
