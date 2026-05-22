@@ -66,7 +66,7 @@ Environment variables are automatically set by the deployment script. They inclu
 
 ### 5. Monitor
 
-- Check Supabase logs: https://supabase.com/dashboard/project/kuxqlvekwuclavoxtgva/logs
+- Check Supabase logs: https://supabase.com/dashboard/project/lbjsoxvhfizjuavsszmp/logs
 - Check Square dashboard for payments
 - Check email delivery
 
