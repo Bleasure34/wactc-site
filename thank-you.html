@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="WACTC - Order Confirmation">
+    <title>Order Confirmation - WACTC</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .thank-you-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        .order-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .order-details h3 {
+            color: var(--wactc-secondary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--wactc-secondary);
+        }
+
+        .order-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--wactc-secondary);
+            margin: 1rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--wactc-primary) 0%, var(--wactc-secondary) 100%);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .next-steps {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h4 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+
+        .next-steps ul {
+            margin-bottom: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--wactc-secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #8b2a2d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(115, 32, 34, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--wactc-secondary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--wactc-secondary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--wactc-secondary);
+            color: white;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/img/logo.png" alt="WACTC Logo" width="75" height="75">
+                </a>
+                <a href="cart/" class="cart-link">
+                    Cart <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="thank-you-container">
+                <!-- Loading State -->
+                <div class="loading" id="loading">
+                    <div class="success-icon">⏳</div>
+                    <h1>Loading Order Details...</h1>
+                    <p>Please wait while we fetch your order information.</p>
+                </div>
+
+                <!-- Error State -->
+                <div class="error" id="error" style="display: none;">
+                    <h3>Unable to Load Order Details</h3>
+                    <p id="error-message">There was an error loading your order information.</p>
+                    <p>Please contact us at <a href="mailto:contact@tntmanufacturing.shop">contact@tntmanufacturing.shop</a> for assistance.</p>
+                </div>
+
+                <!-- Success State -->
+                <div id="success-content" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h1>Thank You for Your Order!</h1>
+                    <p>Your payment has been processed successfully.</p>
+
+                    <div class="order-number" id="order-number">
+                        Order #WACTC-12345
+                    </div>
+
+                    <div class="order-details" id="order-details">
+                        <h3>Order Summary</h3>
+                        <div class="detail-row">
+                            <span>Order Number:</span>
+                            <span id="order-number-detail">WACTC-12345</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Reference ID:</span>
+                            <span id="reference-id">ref-abc123</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Customer:</span>
+                            <span id="customer-name">John Doe</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Email:</span>
+                            <span id="customer-email">john@example.com</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Total:</span>
+                            <span id="order-total">$49.98</span>
+                        </div>
+                    </div>
+
+                    <div class="next-steps">
+                        <h4>What's Next?</h4>
+                        <ul>
+                            <li>You will receive an email confirmation shortly</li>
+                            <li>Your order will be processed within 1-2 business days</li>
+                            <li>You'll receive tracking information once your order ships</li>
+                            <li>If you have any questions, please contact us</li>
+                        </ul>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+                    </div>
+
+                    <div class="contact-info">
+                        <h4>Need Help?</h4>
+                        <p>If you have any questions about your order, please contact us:</p>
+                        <p>
+                            <strong>Email:</strong> <a href="mailto:contact@tntmanufacturing.shop">contact@tntmanufacturing.shop</a><br>
+                            <strong>Phone:</strong> <a href="tel:+17247456242">(724) 745-6242</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 WACTC. All rights reserved.</p>
+                <p>Contact: <a href="mailto:tntmfg@comcast.net">tntmfg@comcast.net</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Supabase Configuration -->
+    <script src="assets/js/supabase-config.js"></script>
+    
+    <!-- Main Application -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        (function() {
+            'use strict';
+
+            // Get URL parameters
+            function getUrlParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            // Load order details from Supabase
+            async function loadOrderDetails(orderNumber, referenceId) {
+                try {
+                    // Use the globally initialized Supabase client
+                    const supabaseClient = window.WACTC_SUPABASE;
+                    
+                    if (!supabaseClient) {
+                        throw new Error('Supabase client not initialized');
+                    }
+
+                    // Fetch order details
+                    const { data: order, error } = await supabaseClient
+                        .from('orders')
+                        .select(`
+                            *,
+                            order_items (
+                                product_name,
+                                quantity,
+                                unit_price,
+                                selections,
+                                subtotal
+                            )
+                        `)
+                        .eq('order_number', orderNumber)
+                        .single();
+
+                    if (error) {
+                        console.error('Error fetching order:', error);
+                        throw error;
+                    }
+
+                    if (!order) {
+                        throw new Error('Order not found');
+                    }
+
+                    // Update the page with order details
+                    document.getElementById('order-number').textContent = `Order #${order.order_number}`;
+                    document.getElementById('order-number-detail').textContent = order.order_number;
+                    document.getElementById('reference-id').textContent = order.reference_id || 'N/A';
+                    document.getElementById('customer-name').textContent = order.customer_name;
+                    document.getElementById('customer-email').textContent = order.customer_email;
+                    document.getElementById('order-total').textContent = `$${order.total.toFixed(2)}`;
+
+                    // Show success content
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('success-content').style.display = 'block';
+
+                    // Update cart count (clear it since order is complete)
+                    if (window.updateCartCount) {
+                        window.updateCartCount();
+                    }
+
+                } catch (error) {
+                    console.error('Error loading order details:', error);
+                    showError('Unable to load order details. Please contact support with your order number.');
+                }
+            }
+
+            // Show error message
+            function showError(message) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-message').textContent = message;
+            }
+
+            // Initialize page
+            document.addEventListener('DOMContentLoaded', function() {
+                const orderNumber = getUrlParameter('order');
+                const referenceId = getUrlParameter('ref');
+
+                if (!orderNumber) {
+                    showError('No order number provided. Please check your confirmation email or contact support.');
+                    return;
+                }
+
+                // Load order details
+                loadOrderDetails(orderNumber, referenceId);
+            });
+        })();
+    </script>
+</body>
+</html>

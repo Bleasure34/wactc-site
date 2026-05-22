@@ -1,0 +1,377 @@
+{
+  "generated_from": "WACTC Products - Sheet1.csv",
+  "products": [
+    {
+      "product_id": "29MP",
+      "name": "ARET Pocket Tee",
+      "colors": "Maroon",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "ARET",
+      "is_active": true
+    },
+    {
+      "product_id": "8000",
+      "name": "Auto Mechanics Short Sleeve Tee",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "Auto",
+      "is_active": true
+    },
+    {
+      "product_id": "436MP",
+      "name": "Carpentry Pocket Polo",
+      "colors": "Maroon",
+      "pricing": {
+        "S-XL": 17.0,
+        "2X": 19.0,
+        "3X": 20.0
+      },
+      "class": "Carpentry",
+      "is_active": true
+    },
+    {
+      "product_id": "8800",
+      "name": "Carpentry Polo",
+      "colors": "Maroon",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Carpentry",
+      "is_active": true
+    },
+    {
+      "product_id": "S508",
+      "name": "Collision Repair Buttondown",
+      "colors": "Steel Grey/Light Stone",
+      "pricing": {
+        "S-XL": 25.0,
+        "2X": 27.0,
+        "3X": 28.0
+      },
+      "class": "Collision Repair",
+      "is_active": true
+    },
+    {
+      "product_id": "S508",
+      "name": "EPS Buttondown",
+      "colors": "Royal/ Classic Navy",
+      "pricing": {
+        "S-XL": 25.0,
+        "2X": 27.0,
+        "3X": 28.0
+      },
+      "class": "EPS",
+      "is_active": true
+    },
+    {
+      "product_id": "436MP",
+      "name": "Electrical Pocket Polo",
+      "colors": "Oxford",
+      "pricing": {
+        "S-XL": 17.0,
+        "2X": 19.0,
+        "3X": 20.0
+      },
+      "class": "Electrical Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "8800",
+      "name": "Electrical Polo",
+      "colors": "Sport Grey",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Electrical Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "8300",
+      "name": "HVAC Pocket Tee",
+      "colors": "Sport Grey",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "HVAC",
+      "is_active": true
+    },
+    {
+      "product_id": "SP24",
+      "name": "Machine Shop Buttondown",
+      "colors": "Charcoal",
+      "pricing": {
+        "S-XL": 27.0,
+        "2X": 29.0,
+        "3X": 30.0
+      },
+      "class": "Machine Shop",
+      "is_active": true
+    },
+    {
+      "product_id": "436MP",
+      "name": "Masonry Pocket Polo",
+      "colors": "Maroon",
+      "pricing": {
+        "S-XL": 17.0,
+        "2X": 19.0,
+        "3X": 20.0
+      },
+      "class": "Masonry",
+      "is_active": true
+    },
+    {
+      "product_id": "8800",
+      "name": "Masonry Polo",
+      "colors": "Maroon",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Masonry",
+      "is_active": true
+    },
+    {
+      "product_id": "436MP",
+      "name": "Networking Pocket Polo",
+      "colors": "Oxford",
+      "pricing": {
+        "S-XL": 17.0,
+        "2X": 19.0,
+        "3X": 20.0
+      },
+      "class": "Networking",
+      "is_active": true
+    },
+    {
+      "product_id": "8800",
+      "name": "Networking Polo",
+      "colors": "Sport Grey",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Networking",
+      "is_active": true
+    },
+    {
+      "product_id": "18000",
+      "name": "SM Crewsweatshirt",
+      "colors": "Black, Sport Grey",
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 22.0,
+        "3X": 23.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "8000",
+      "name": "SM Short Sleeve Tee",
+      "colors": "Black, Sport Grey",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "A4N3142",
+      "name": "SM Poly Shirt",
+      "colors": "Black, Silver",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "F110",
+      "name": "SM Men's Fleece Jacket",
+      "colors": "Gusty Grey",
+      "pricing": {
+        "S-XL": 50.0,
+        "2X": 52.0,
+        "3X": 53.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "L110",
+      "name": "SM Ladies Fleece Jacket",
+      "colors": "Gusty Grey",
+      "pricing": {
+        "S-XL": 50.0,
+        "2X": 52.0,
+        "3X": 53.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "CS418",
+      "name": "Men's Lightweight Polo",
+      "colors": "Black, Blue Lake, Charcoal, Dark Green, Dark Navy, Light Grey, Maroon, Red, Royal, Tan, White",
+      "pricing": {
+        "S-XL": 28.99,
+        "2X": 30.99,
+        "3X": 31.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "CS419",
+      "name": "Ladies Lightweight Polo",
+      "colors": "Black, Blue Lake, Charcoal, Dark Green, Dark Navy, Light Grey, Maroon, Red, Royal, Tan",
+      "pricing": {
+        "S-XL": 28.99,
+        "2X": 30.99,
+        "3X": 31.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "F217",
+      "name": "Men's Fleece Jacket",
+      "colors": "Black, Deep Smoke, Forest Green, Insignia Blue, Iron Grey, Maroon, True Navy, True Red, True Royal",
+      "pricing": {
+        "S-XL": 44.99,
+        "2X": 46.99,
+        "3X": 47.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "L217",
+      "name": "Ladies Fleece Jacket",
+      "colors": "Black, Deep Smoke, Forest Green, Insignia Blue, Iron Grey, Maroon, True Navy, True Red, True Royal, Winter White",
+      "pricing": {
+        "S-XL": 38.99,
+        "2X": 40.99,
+        "3X": 41.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "LST253",
+      "name": "Ladies 1/4 Zip Sweatshirt",
+      "colors": "Athletic Heather, Black, Forest Green, Graphite Heather, Maroon, True Navy, True Red, True Royal, Vintage Heather, White",
+      "pricing": {
+        "S-XL": 44.99,
+        "2X": 46.0,
+        "3X": 47.0
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "LW808",
+      "name": "Ladies Long Sleeve Twill Shirt",
+      "colors": "Burgundy, Cloud Blue, Dark Green, Deep Black, Gusty Grey, Purple, Regatta Blue, Rich Red, Storm Grey, True Navy, True Royal, Ultramarine Blue, Wheat, White",
+      "pricing": {
+        "S-XL": 31.99,
+        "2X": 33.99,
+        "3X": 34.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "LW809",
+      "name": "Ladies Short Sleeve Twill",
+      "colors": "Burgundy, Cloud Blue, Dark Green, Deep Black, Gusty Grey, Purple, Regatta Blue, Rich Red, Storm Grey, True Navy, True Royal, Ultramarine Blue, Wheat, White",
+      "pricing": {
+        "S-XL": 29.99,
+        "2X": 31.99,
+        "3X": 32.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "ST253",
+      "name": "Men's 1/4 Zip Sweatshirt",
+      "colors": "Athletic Heather, Black, Forest Green, Graphite Heather, Maroon, True Navy, True Red, True Royal, Vintage Heather, White",
+      "pricing": {
+        "S-XL": 44.99,
+        "2X": 46.0,
+        "3X": 47.0
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "W808",
+      "name": "Men's Long Sleeve Twill Shirt",
+      "colors": "Burgundy, Cloud Blue, Dark Green, Deep Black, Gusty Grey, Purple, Regatta Blue, Rich Red, Storm Grey, True Navy, True Royal, Ultramarine Blue, Wheat, White",
+      "pricing": {
+        "S-XL": 31.99,
+        "2X": 33.99,
+        "3X": 34.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "W809",
+      "name": "Men's Short Sleeve Twill",
+      "colors": "Burgundy, Cloud Blue, Dark Green, Deep Black, Gusty Grey, Purple, Regatta Blue, Rich Red, Storm Grey, True Navy, True Royal, Ultramarine Blue, Wheat, White",
+      "pricing": {
+        "S-XL": 29.99,
+        "2X": 31.99,
+        "3X": 32.99
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "5000",
+      "name": "Welding Short Sleeve Tee",
+      "colors": "Navy",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "Welding",
+      "is_active": true
+    },
+    {
+      "product_id": "5400",
+      "name": "Welding Long Sleeve Tee",
+      "colors": "Navy",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Welding",
+      "is_active": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+# Environment and secrets
+.env
+.env.*
+*.env
+config/*.env
+!config/*.env.example
+
+# Supabase local dev
+.supabase/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

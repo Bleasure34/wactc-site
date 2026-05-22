@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="WACTC Computer Science Product - computer science apparel">
+    <title>Computer Science Product - WACTC</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <style>
+        .product-page {
+            padding: 2rem 0;
+        }
+        
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .product-image-container {
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .product-main-image {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            object-fit: contain;
+            object-position: center 60%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
+        }
+        
+        .product-details {
+            padding: 1rem 0;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .product-options {
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+        }
+        
+        .color-option {
+            width: 50px;
+            height: 50px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .color-option-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .color-swatch {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-tooltip {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 10000;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .color-option-wrapper:hover .color-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .color-option:hover,
+        .color-option.selected {
+            border-color: var(--wactc-primary);
+            transform: scale(1.1);
+        }
+        
+        .color-quantity-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, var(--wactc-secondary) 0%, #8b2a2d 50%, var(--wactc-secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(115, 32, 34, 0.4);
+            border: 2px solid white;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .add-to-cart-quantity-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, var(--wactc-secondary) 0%, #8b2a2d 50%, var(--wactc-secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(115, 32, 34, 0.4);
+            border: 2px solid white;
+            z-index: 1000;
+        }
+        
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .size-option {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--muted);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            min-width: 50px;
+            text-align: center;
+            color: var(--text);
+        }
+        
+        .size-option:hover,
+        .size-option.selected {
+            border-color: var(--wactc-primary);
+            background: var(--wactc-primary);
+            color: white;
+        }
+        
+        .quantity-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 2px solid #6c757d;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--wactc-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: var(--wactc-secondary);
+            border-color: var(--wactc-secondary);
+            color: white;
+            position: relative;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #5a1a1c;
+            border-color: #5a1a1c;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--wactc-primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 2rem;
+            color: var(--error);
+        }
+        
+        .loading-message {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-image-container {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="../../" class="logo">
+                    <img src="../../assets/img/logo.png" alt="WACTC Logo" width="75" height="75">
+                </a>
+                <a href="../cart/" class="cart-link">Cart</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product-page">
+                <a href="computer-science.html" class="back-link">
+                    &larr; Back to Computer Science
+                </a>
+                
+                <div id="product-loading" class="loading-message">
+                    <p>Loading product details...</p>
+                </div>
+                
+                <div id="product-error" class="error-message" style="display: none;">
+                    <p>Product not found. Please check the URL and try again.</p>
+                    <a href="index.html" class="btn btn-primary">Back to Products</a>
+                </div>
+                
+                <div id="product-container" class="product-container" style="display: none;">
+                    <div class="product-image-container">
+                        <img id="product-main-image" src="../../assets/img/Sport-Grey.png" alt="Product preview" class="product-main-image" width="500" height="500" loading="eager" decoding="async" fetchpriority="high">
+                    </div>
+                    
+                    <div class="product-details">
+                        <h1 id="product-title" class="product-title"></h1>
+                        <p id="product-description" class="product-description"></p>
+                        
+                        <div class="product-options">
+                            <div class="option-group">
+                                <label class="option-label">Color</label>
+                                <div id="color-options" class="color-options">
+                                    <!-- Color options will be populated dynamically -->
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="option-label">Size</label>
+                                <div id="size-options" class="size-options">
+                                    <!-- Size options will be populated dynamically -->
+                                </div>
+                            </div>
+                            
+                            <div class="quantity-group">
+                                <label class="option-label">Quantity</label>
+                                <input type="number" id="quantity-input" class="quantity-input" value="1" min="1">
+                            </div>
+                        </div>
+                        
+                        <div id="product-price" class="product-price"></div>
+                        
+                        <button id="add-to-cart-btn" class="btn btn-primary add-to-cart-btn" disabled>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 WACTC. All rights reserved.</p>
+                <p>Contact: <a href="mailto:tntmfg@comcast.net">tntmfg@comcast.net</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Student Products -->
+    <script src="../../assets/js/student-products.js"></script>
+    
+    <!-- Main Application -->
+    <script src="../../assets/js/main.js"></script>
+    
+    <!-- Product Page Script -->
+    <script>
+        // Determine which class this page is for based on the page filename
+        const PAGE_PROGRAM_MAP = {
+            'auto-product.html': 'Auto',
+            'hvac-product.html': 'HVAC',
+            'carpentry-product.html': 'Carpentry',
+            'collision-repair-product.html': 'Collision Repair',
+            'computer-science-product.html': 'Computer Science',
+            'electrical-occupations-product.html': 'Electrical Occupations',
+            'eps-product.html': 'EPS',
+            'machine-shop-product.html': 'Machine Shop',
+            'masonry-product.html': 'Masonry',
+            'networking-product.html': 'Networking',
+            'sports-med-product.html': 'Sports Medicine',
+            'welding-product.html': 'Welding',
+            'aret-product.html': 'ARET'
+        };
+        
+        const currentPage = window.location.pathname.split('/').pop();
+        const CURRENT_CLASS = PAGE_PROGRAM_MAP[currentPage];
+        
+        let currentProduct = null;
+        let selectedColor = null;
+        let selectedSize = null;
+        let selectedQuantity = 1;
+        
+        // Get product ID from URL
+        function getProductIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+        
+        // Get color from URL parameter
+        function getColorFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('color');
+        }
+        
+        // Load and display product
+        async function loadProduct() {
+            const productId = getProductIdFromUrl();
+            
+            if (!productId) {
+                showError();
+                return;
+            }
+            
+            // Wait for staffProducts to be initialized
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.studentProducts || window.studentProducts.products.size === 0) {
+                if (attempts >= maxAttempts) {
+                    showError();
+                    return;
+                }
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            // Get product from database
+            currentProduct = window.studentProducts.getProduct(productId, CURRENT_CLASS);
+            
+            if (!currentProduct) {
+                showError();
+                return;
+            }
+            
+            // Check if this program has only 1 product, and update back button if so
+            updateBackButton(productId);
+            
+            // Display product
+            displayProduct();
+        }
+        
+        // Update back button to skip gallery if program has only 1 product
+        function updateBackButton(productId) {
+            const programId = window.studentProducts.getProgramId(productId, CURRENT_CLASS);
+            if (!programId) return;
+            
+            const programProducts = window.studentProducts.getProductsByProgram(programId);
+            if (programProducts.length === 1) {
+                // Single product - link back to programs index
+                const backLink = document.querySelector('.back-link');
+                if (backLink) {
+                    backLink.href = '../index.html';
+                    backLink.innerHTML = '&larr; Back to Programs';
+                }
+            }
+        }
+        
+        async function displayProduct() {
+            // Hide loading, show product
+            document.getElementById('product-loading').style.display = 'none';
+            document.getElementById('product-container').style.display = 'grid';
+            
+            // Set basic product info
+            document.getElementById('product-title').textContent = currentProduct.name;
+            document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for computer science students.`;
+            
+            // Get only colors with available image previews
+            const colors = await window.studentProducts.getAvailableColorsWithImages(currentProduct.product_id, CURRENT_CLASS);
+            const urlColor = getColorFromUrl();
+            
+            // Select default color ASAP to paint the main image early
+            if (urlColor && colors.includes(urlColor)) {
+                selectColor(urlColor);
+            } else if (colors.length > 0) {
+                selectColor(colors[0]);
+            }
+            
+            // Populate colors and sizes
+            populateColors(colors);
+            populateSizes();
+            
+            // Select default size
+            const sizes = window.studentProducts.getAvailableSizes();
+            if (sizes.length > 0) {
+                selectSize(sizes[0]);
+            }
+            
+            // Update price and quantity indicators
+            updatePrice();
+            updateColorQuantityBadges();
+        }
+        
+        function populateColors(colors) {
+            const colorContainer = document.getElementById('color-options');
+            const list = Array.isArray(colors) && colors.length ? colors : window.studentProducts.getColors(currentProduct.product_id);
+            
+            colorContainer.innerHTML = list.map(color => {
+                const texturePath = window.studentProducts.getColorSwatchTexture(color);
+                const colorDisplayName = window.studentProducts.getColorDisplayName(color);
+                return `
+                    <div class="color-option-wrapper" data-color="${color}">
+                        <div class="color-option" onclick="selectColor('${color}')">
+                            <div class="color-swatch" style="background-image: url('${texturePath}'); background-size: cover; background-position: center;"></div>
+                        </div>
+                        <div class="color-tooltip">${colorDisplayName}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function populateSizes() {
+            const sizeContainer = document.getElementById('size-options');
+            const sizes = window.studentProducts.getAvailableSizes();
+            
+            sizeContainer.innerHTML = sizes.map(size => {
+                return `<div class="size-option" data-size="${size}" onclick="selectSize('${size}')">${size}</div>`;
+            }).join('');
+        }
+        
+        function selectColor(color) {
+            selectedColor = color;
+            
+            // Update visual selection
+            document.querySelectorAll('.color-option-wrapper').forEach(wrapper => {
+                const option = wrapper.querySelector('.color-option');
+                option.classList.remove('selected');
+                if (wrapper.dataset.color === color) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Update main image
+            const imagePath = window.studentProducts.getImagePath(currentProduct.product_id, color, null, CURRENT_CLASS);
+            const mainImage = document.getElementById('product-main-image');
+            mainImage.src = imagePath;
+            mainImage.alt = `${currentProduct.name} in ${color}`;
+            mainImage.onerror = function() {
+                this.src = '../../assets/img/Sport-Grey.png';
+            };
+            
+            // Update add to cart button state
+            updateAddToCartButton();
+        }
+        
+        function selectSize(size) {
+            selectedSize = size;
+            
+            // Update visual selection
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.dataset.size === size) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Update price
+            updatePrice();
+            
+            // Update add to cart button state
+            updateAddToCartButton();
+        }
+        
+        function updatePrice() {
+            if (selectedSize && currentProduct) {
+                const price = window.studentProducts.getPriceForSize(currentProduct.product_id, selectedSize, CURRENT_CLASS);
+                document.getElementById('product-price').textContent = window.studentProducts.formatPrice(price);
+            }
+        }
+        
+        function updateAddToCartButton() {
+            const button = document.getElementById('add-to-cart-btn');
+            const isReady = selectedColor && selectedSize;
+            
+            button.disabled = !isReady;
+            
+            // Calculate total quantity in cart for this product
+            const totalQuantity = getProductTotalQuantityInCart();
+            
+            // Remove existing badge
+            const existingBadge = button.querySelector('.add-to-cart-quantity-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+            
+            if (isReady) {
+                button.textContent = 'Add to Cart';
+                
+                // Add quantity badge if quantity > 0
+                if (totalQuantity > 0) {
+                    const badge = document.createElement('div');
+                    badge.className = 'add-to-cart-quantity-badge';
+                    badge.textContent = totalQuantity;
+                    button.appendChild(badge);
+                }
+            } else {
+                button.textContent = 'Select Color & Size';
+            }
+        }
+        
+        // Get total quantity of this product in cart (all variants)
+        function getProductTotalQuantityInCart() {
+            if (!currentProduct) return 0;
+            
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
+            const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            const productIdPrefix = currentProduct.product_id;
+            
+            // Sum all items that match this product ID
+            return cart.reduce((total, item) => {
+                if (item.id === productIdPrefix || item.id.startsWith(productIdPrefix + '-')) {
+                    return total + (parseInt(item.quantity) || 0);
+                }
+                return total;
+            }, 0);
+        }
+        
+        // Get quantity of a specific color variant in cart
+        function getColorQuantityInCart(color) {
+            if (!currentProduct) return 0;
+            
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
+            const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            
+            // Sum all items that match this product and color
+            return cart.reduce((total, item) => {
+                // Check if item belongs to this product and has this color
+                if ((item.id === currentProduct.product_id || item.id.startsWith(currentProduct.product_id + '-')) &&
+                    item.selections && item.selections.color === color) {
+                    return total + (parseInt(item.quantity) || 0);
+                }
+                return total;
+            }, 0);
+        }
+        
+        // Update color swatch quantity badges
+        function updateColorQuantityBadges() {
+            const colorWrappers = document.querySelectorAll('.color-option-wrapper');
+            
+            colorWrappers.forEach(wrapper => {
+                const color = wrapper.dataset.color;
+                const quantity = getColorQuantityInCart(color);
+                
+                // Remove existing badge
+                const existingBadge = wrapper.querySelector('.color-quantity-badge');
+                if (existingBadge) {
+                    existingBadge.remove();
+                }
+                
+                // Add new badge if quantity > 0
+                if (quantity > 0) {
+                    const badge = document.createElement('div');
+                    badge.className = 'color-quantity-badge';
+                    badge.textContent = quantity;
+                    wrapper.appendChild(badge);
+                }
+            });
+        }
+        
+        function showError() {
+            document.getElementById('product-loading').style.display = 'none';
+            document.getElementById('product-error').style.display = 'block';
+        }
+        
+        // Add to cart functionality
+        document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+            if (!selectedColor || !selectedSize || !currentProduct) return;
+            
+            const quantity = parseInt(document.getElementById('quantity-input').value) || 1;
+            const price = window.studentProducts.getPriceForSize(currentProduct.product_id, selectedSize, CURRENT_CLASS);
+            
+            const productToAdd = {
+                id: `${currentProduct.product_id}-${selectedSize}-${selectedColor.replace(/\s+/g, '-')}`,
+                name: currentProduct.name,
+                description: `${currentProduct.name} - ${selectedColor}, Size ${selectedSize}`,
+                price: price,
+                image: window.studentProducts.getImagePath(currentProduct.product_id, selectedColor),
+                quantity: quantity,
+                selections: {
+                    size: selectedSize,
+                    color: selectedColor
+                }
+            };
+            
+            // Add to cart using the main cart function
+            if (window.addToCart && window.addToCart(productToAdd)) {
+                // Show success feedback
+                const originalText = this.textContent;
+                this.textContent = 'Added to Cart!';
+                this.style.backgroundColor = '#28a745';
+                
+                // Update quantity indicators
+                updateColorQuantityBadges();
+                updateAddToCartButton();
+                
+                setTimeout(() => {
+                    updateAddToCartButton();
+                    this.style.backgroundColor = '';
+                }, 2000);
+            }
+        });
+        
+        // Quantity input validation
+        document.getElementById('quantity-input').addEventListener('change', function() {
+            const value = parseInt(this.value);
+            if (value < 1) this.value = 1;
+            if (value > 999) this.value = 999; // Reasonable maximum limit
+            selectedQuantity = parseInt(this.value);
+        });
+        
+        // Listen for cart updates from other pages/tabs
+        window.addEventListener('storage', function(e) {
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
+            if (e.key === cartKey) {
+                updateColorQuantityBadges();
+                updateAddToCartButton();
+            }
+        });
+        
+        // Listen for custom cart update events
+        window.addEventListener('cartUpdated', function() {
+            updateColorQuantityBadges();
+            updateAddToCartButton();
+        });
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', loadProduct);
+        
+        // Set site context for staff section
+        sessionStorage.setItem('wactc_site_context', 'student');
+    </script>
+</body>
+</html>
+
+
+

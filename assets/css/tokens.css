@@ -1,0 +1,118 @@
+/* WACTC Design Tokens */
+
+:root {
+  /* Colors */
+  --wactc-blue: #aeaeae;
+  --wactc-gold: #f39c12;
+  --wactc-primary: #aeaeae;
+  --wactc-primary-light: #c4c4c4;
+  --wactc-primary-dark: #999999;
+  --wactc-secondary: #732022;
+  --wactc-accent: #e74c3c;
+  --wactc-success: #27ae60;
+  --wactc-warning: #f39c12;
+  --wactc-info: #3498db;
+  --wactc-purple: #9b59b6;
+  --wactc-orange: #e67e22;
+  
+  --text: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --bg: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-dark: #2c3e50;
+  
+  --muted: #e0e0e0;
+  --muted-light: #f5f5f5;
+  --muted-dark: #cccccc;
+  
+  --success: #27ae60;
+  --warning: #f39c12;
+  --error: #e74c3c;
+  --info: #3498db;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 6rem;     /* 96px */
+  --space-10: 8rem;    /* 128px */
+  
+  /* Font Sizes */
+  --fs-300: 0.75rem;   /* 12px */
+  --fs-400: 0.875rem;  /* 14px */
+  --fs-500: 1rem;      /* 16px */
+  --fs-600: 1.125rem;  /* 18px */
+  --fs-700: 1.25rem;   /* 20px */
+  --fs-800: 1.5rem;    /* 24px */
+  --fs-900: 2rem;      /* 32px */
+  --fs-1000: 2.5rem;   /* 40px */
+  --fs-1100: 3rem;     /* 48px */
+  --fs-1200: 4rem;     /* 64px */
+  
+  /* Font Weights */
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+  
+  /* Line Heights */
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.75;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* Breakpoints (for reference in CSS) */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #ffffff;
+    --text-light: #cccccc;
+    --text-muted: #999999;
+    --bg: #1a1a1a;
+    --bg-light: #2d2d2d;
+    --muted: #404040;
+    --muted-light: #2d2d2d;
+    --muted-dark: #666666;
+  }
+}
