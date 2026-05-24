@@ -113,7 +113,7 @@
                     const productName = this.closest('.product-card').querySelector('h3').textContent;
                     const modalOverlay = document.createElement('div');
                     modalOverlay.className = 'color-modal-overlay';
-                    modalOverlay.innerHTML = `<div class="color-modal"><div class="color-modal-header"><h3 class="color-modal-title">Available Colors - ${productName}</h3><button class="color-modal-close" type="button">&times;</button></div><div class="color-modal-body"><div class="color-modal-grid"><div style="padding: 40px; text-align: center; color: var(--text-light);">Loading colors...</div></div></div></div>`;
+                    modalOverlay.innerHTML = `<div class="color-modal"><div class="color-modal-header"><h3 class="color-modal-title">Available Colors - ${productName}</h3><button class="color-modal-close" type="button">&times;</button></div><div class="color-modal-body"><div class="color-modal-grid"><div style="padding: 40px; text-align: center; color: #333333;">Loading colors...</div></div></div></div>`;
                     document.body.appendChild(modalOverlay);
                     setTimeout(() => modalOverlay.classList.add('show'), 10);
                     try {

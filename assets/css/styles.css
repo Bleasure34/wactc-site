@@ -756,7 +756,7 @@ footer {
 
 .page-header p {
     font-size: var(--fs-600);
-    color: var(--text-light);
+    color: #333333;
     max-width: 600px;
     margin: 0 auto var(--space-8) auto;
     line-height: var(--lh-relaxed);
