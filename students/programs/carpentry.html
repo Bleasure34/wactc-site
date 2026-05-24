@@ -58,7 +58,7 @@
         
         <div class="container">
             <div class="staff-grid" id="carpentry-products-grid">
-                <div class="loading-message"><p>Loading Carpentry products...</p></div>
+                
             </div>
         </div>
     </main>
@@ -91,7 +91,7 @@
             grid.innerHTML = products.map(product => {
                 const colors = window.studentProducts.getColors(product.product_id, PROGRAM_CLASS);
                 const imagePath = colors.length > 0 ? window.studentProducts.getPreviewImagePath(product.product_id, colors[0], PROGRAM_CLASS) : '../../assets/img/Sport-Grey.png';
-                return `<div class="product-card"><div class="product-image"><img src="${imagePath}" alt="${product.name}" class="product-img" onerror="this.src='../../assets/img/Sport-Grey.png'"></div><div class="color-options-trigger" data-product-id="${product.product_id}">View Color Options</div><div class="product-content"><h3>${product.name}</h3><p>Professional carpentry apparel</p><button class="btn btn-primary" onclick="event.stopPropagation();window.location.href='carpentry-product.html?id=${product.product_id}'" style="background-color: var(--wactc-secondary); border-color: var(--wactc-secondary);">View Product</button></div></div>`;
+                return `<div class="product-card"><div class="product-image"><img src="${imagePath}" alt="${product.name}" class="product-img" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')"></div><div class="color-options-trigger" data-product-id="${product.product_id}">View Color Options</div><div class="product-content"><h3>${product.name}</h3><p>Professional carpentry apparel</p><button class="btn btn-primary" onclick="event.stopPropagation();window.location.href='carpentry-product.html?id=${product.product_id}'" style="background-color: var(--wactc-secondary); border-color: var(--wactc-secondary);">View Product</button></div></div>`;
             }).join('');
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {
