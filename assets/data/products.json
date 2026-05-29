@@ -482,6 +482,32 @@
       "is_active": true
     },
     {
+      "product_id": "WACTC-CAP",
+      "name": "WACTC Baseball Cap",
+      "colors": "Black",
+      "sizes": ["S/M", "L/XL"],
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 20.0,
+        "3X": 20.0
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "WACTC-CAP",
+      "name": "WACTC Baseball Cap",
+      "colors": "Black",
+      "sizes": ["S/M", "L/XL"],
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 20.0,
+        "3X": 20.0
+      },
+      "class": "WACTC",
+      "is_active": true
+    },
+    {
       "product_id": "PA_W809",
       "name": "Machine Shop SS Buttondown",
       "colors": "Dark Green",

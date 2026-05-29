@@ -23,6 +23,7 @@ class StudentProducts {
         'Masonry': 'masonry',
         'Networking': 'networking',
         'Sports Medicine': 'sports-med',
+        'WACTC': 'wactc-gear',
         'Welding': 'welding',
         'ARET': 'aret'
     };
@@ -271,8 +272,14 @@ class StudentProducts {
         return pricing['S-XL'] || 0; // Default to S-XL pricing
     }
 
-    // Get available sizes
-    getAvailableSizes() {
+    // Get available sizes — returns product-specific sizes if defined, otherwise standard apparel sizes
+    getAvailableSizes(productId = null, className = null) {
+        if (productId) {
+            const product = this.getProduct(productId, className);
+            if (product && Array.isArray(product.sizes) && product.sizes.length) {
+                return product.sizes;
+            }
+        }
         return ['S', 'M', 'L', 'XL', '2XL', '3XL'];
     }
 
