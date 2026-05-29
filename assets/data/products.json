@@ -23,6 +23,18 @@
         "3X": 16.0
       },
       "class": "Auto",
+      "is_active": false
+    },
+    {
+      "product_id": "PA_W809",
+      "name": "Auto Mechanics Short Sleeve Buttondown",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 28.0,
+        "2X": 30.0,
+        "3X": 31.0
+      },
+      "class": "Auto",
       "is_active": true
     },
     {
