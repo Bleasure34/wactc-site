@@ -423,6 +423,9 @@
                     return;
                 }
 
+                // Show loading state before async query
+                document.getElementById('loading').style.display = 'block';
+
                 // Load order details
                 loadOrderDetails(orderNumber, referenceId);
             });
