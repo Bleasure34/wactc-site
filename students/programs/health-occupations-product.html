@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="WACTC Staff Product - Professional staff apparel">
-    <title>Product - WACTC</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <meta name="description" content="WACTC Health Occupations Product - Health Occupations apparel">
+    <title>Health Occupations Product - WACTC</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
     <style>
         .product-page {
             padding: 2rem 0;
@@ -47,7 +47,7 @@
         
         .product-description {
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: #333333;
             margin-bottom: 2rem;
             line-height: 1.6;
         }
@@ -56,36 +56,6 @@
             margin-bottom: 2rem;
         }
         
-        .embroidery-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--muted);
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-        }
-
-        .embroidery-option input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-        }
-
-        .embroidery-note {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .price-note {
-            display: inline-block;
-            margin-left: 0.5rem;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
         .option-group {
             margin-bottom: 1.5rem;
         }
@@ -210,45 +180,110 @@
         .size-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.625rem;
+            margin-bottom: 1.5rem;
         }
         
         .size-option {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--muted);
-            border-radius: 4px;
-            background: white;
+            padding: 0.6rem 1.25rem;
+            border: 2px solid #cccccc;
+            border-radius: 6px;
+            background: #ffffff !important;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: 500;
-            min-width: 50px;
+            transition: all 0.15s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            min-width: 58px;
             text-align: center;
-            color: var(--text);
+            color: #333333 !important;
+            color-scheme: light;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
         
-        .size-option:hover,
+        .size-option:hover {
+            border-color: #732022;
+            color: #732022 !important;
+            box-shadow: 0 2px 6px rgba(115,32,34,0.2);
+        }
+
         .size-option.selected {
-            border-color: var(--wactc-primary);
-            background: var(--wactc-primary);
+            border-color: #732022;
+            border-width: 3px;
+            background: #732022 !important;
+            color: #ffffff !important;
+            box-shadow: 0 3px 10px rgba(115,32,34,0.35);
+            transform: translateY(-1px);
+        }
+
+        .size-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #732022;
             color: white;
+            font-size: 9px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            line-height: 1;
         }
         
         .quantity-group {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 0;
+            margin-bottom: 1.5rem;
+            width: fit-content;
         }
         
+        .qty-btn {
+            width: 38px;
+            height: 38px;
+            border: 2px solid #cccccc;
+            background: #f8f8f8 !important;
+            color: #333333 !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+        }
+        .qty-btn:first-child { border-radius: 6px 0 0 6px; }
+        .qty-btn:last-child  { border-radius: 0 6px 6px 0; }
+        .qty-btn:hover {
+            background: #732022 !important;
+            border-color: #732022;
+            color: #ffffff !important;
+        }
+
         .quantity-input {
-            width: 80px;
-            padding: 0.5rem;
-            border: 2px solid #6c757d;
-            border-radius: 4px;
+            width: 58px;
+            height: 38px;
+            padding: 0.25rem;
+            border: 2px solid #cccccc;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
             text-align: center;
             font-size: 1rem;
-            background-color: white;
+            font-weight: 600;
+            background-color: #ffffff !important;
+            color: #333333 !important;
+            color-scheme: light;
+            -moz-appearance: textfield;
         }
+        .quantity-input::-webkit-outer-spin-button,
+        .quantity-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         
         .product-price {
             font-size: 1.5rem;
@@ -296,7 +331,7 @@
         .loading-message {
             text-align: center;
             padding: 2rem;
-            color: var(--text-light);
+            color: #333333;
         }
         
         @media (max-width: 768px) {
@@ -315,8 +350,8 @@
     <header>
         <div class="container">
             <div class="header-container">
-                <a href="../" class="logo">
-                    <img src="../assets/img/logo.png" alt="WACTC Logo" width="75" height="75">
+                <a href="../../" class="logo">
+                    <img src="../../assets/img/logo.png" alt="WACTC Logo" width="75" height="75">
                 </a>
                 <a href="../cart/" class="cart-link">Cart</a>
             </div>
@@ -326,8 +361,8 @@
     <main>
         <div class="container">
             <div class="product-page">
-                <a href="index.html" class="back-link">
-                    ← Back to Staff Products
+                <a href="health-occupations.html" class="back-link">
+                    &larr; Back to Health Occupations
                 </a>
                 
                 <div id="product-loading" class="loading-message">
@@ -341,7 +376,7 @@
                 
                 <div id="product-container" class="product-container" style="display: none;">
                     <div class="product-image-container">
-                        <img id="product-main-image" alt="Product preview" class="product-main-image" width="500" height="500" loading="eager" decoding="async" fetchpriority="high" style="display: none;">
+                        <img id="product-main-image" src="../../assets/img/Sport-Grey.png" alt="Product preview" class="product-main-image" width="500" height="500" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                     
                     <div class="product-details">
@@ -362,19 +397,11 @@
                                     <!-- Size options will be populated dynamically -->
                                 </div>
                             </div>
-
-                            <div id="embroidery-option-group" class="option-group" style="display: none;">
-                                <label class="option-label">Embroidery</label>
-                                <label class="embroidery-option" for="embroidery-checkbox">
-                                    <input type="checkbox" id="embroidery-checkbox" checked>
-                                    <span id="embroidery-label-text">Include embroidery (standard)</span>
-                                </label>
-                                <p id="embroidery-note" class="embroidery-note">Embroidery is included on staff apparel at no additional cost.</p>
-                            </div>
                             
                             <div class="quantity-group">
-                                <label class="option-label">Quantity</label>
+                                <button type="button" class="qty-btn" onclick="adjustQty(-1)">−</button>
                                 <input type="number" id="quantity-input" class="quantity-input" value="1" min="1">
+                                <button type="button" class="qty-btn" onclick="adjustQty(1)">+</button>
                             </div>
                         </div>
                         
@@ -398,23 +425,38 @@
         </div>
     </footer>
 
-    <!-- Staff Products -->
-    <script src="../assets/js/staff-products.js"></script>
+    <!-- Student Products -->
+    <script src="../../assets/js/student-products.js"></script>
     
     <!-- Main Application -->
-    <script src="../assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
     
     <!-- Product Page Script -->
     <script>
+        // Determine which class this page is for based on the page filename
+        const PAGE_PROGRAM_MAP = {
+            'auto-product.html': 'Auto',
+            'hvac-product.html': 'HVAC',
+            'carpentry-product.html': 'Carpentry',
+            'collision-repair-product.html': 'Collision Repair',
+            'computer-science-product.html': 'Computer Science',
+            'electrical-occupations-product.html': 'Electrical Occupations',
+            'health-occupations-product.html': 'Health Occupations',
+            'machine-shop-product.html': 'Machine Shop',
+            'masonry-product.html': 'Masonry',
+            'networking-product.html': 'Networking',
+            'sports-med-product.html': 'Sports Medicine',
+            'welding-product.html': 'Welding',
+            'aret-product.html': 'ARET'
+        };
+        
+        const currentPage = window.location.pathname.split('/').pop();
+        const CURRENT_CLASS = PAGE_PROGRAM_MAP[currentPage];
+        
         let currentProduct = null;
         let selectedColor = null;
         let selectedSize = null;
         let selectedQuantity = 1;
-        let embroiderySelected = true;
-        let supportsEmbroidery = false;
-
-        const EMBROIDERY_DISCOUNT = 10;
-        const EMBROIDERY_EXCLUDED_PRODUCTS = new Set(['F217', 'L217']);
         
         // Get product ID from URL
         function getProductIdFromUrl() {
@@ -441,7 +483,7 @@
             let attempts = 0;
             const maxAttempts = 50;
             
-            while (!window.staffProducts || window.staffProducts.products.size === 0) {
+            while (!window.studentProducts || window.studentProducts.products.size === 0) {
                 if (attempts >= maxAttempts) {
                     showError();
                     return;
@@ -451,15 +493,34 @@
             }
             
             // Get product from database
-            currentProduct = window.staffProducts.getProduct(productId);
+            currentProduct = window.studentProducts.getProduct(productId, CURRENT_CLASS);
             
             if (!currentProduct) {
                 showError();
                 return;
             }
             
+            // Check if this program has only 1 product, and update back button if so
+            updateBackButton(productId);
+            
             // Display product
             displayProduct();
+        }
+        
+        // Update back button to skip gallery if program has only 1 product
+        function updateBackButton(productId) {
+            const programId = window.studentProducts.getProgramId(productId, CURRENT_CLASS);
+            if (!programId) return;
+            
+            const programProducts = window.studentProducts.getProductsByProgram(programId);
+            if (programProducts.length === 1) {
+                // Single product - link back to programs index
+                const backLink = document.querySelector('.back-link');
+                if (backLink) {
+                    backLink.href = '../index.html';
+                    backLink.innerHTML = '&larr; Back to Programs';
+                }
+            }
         }
         
         async function displayProduct() {
@@ -469,10 +530,10 @@
             
             // Set basic product info
             document.getElementById('product-title').textContent = currentProduct.name;
-            document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for staff members.`;
+            document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for Health Occupations students.`;
             
             // Get only colors with available image previews
-            const colors = await window.staffProducts.getAvailableColorsWithImages(currentProduct.product_id);
+            const colors = await window.studentProducts.getAvailableColorsWithImages(currentProduct.product_id, CURRENT_CLASS);
             const urlColor = getColorFromUrl();
             
             // Select default color ASAP to paint the main image early
@@ -487,13 +548,11 @@
             populateSizes();
             
             // Select default size
-            const sizes = window.staffProducts.getAvailableSizes(currentProduct.product_id);
+            const sizes = window.studentProducts.getAvailableSizes();
             if (sizes.length > 0) {
                 selectSize(sizes[0]);
             }
             
-            initializeEmbroideryOption();
-
             // Update price and quantity indicators
             updatePrice();
             updateColorQuantityBadges();
@@ -501,11 +560,11 @@
         
         function populateColors(colors) {
             const colorContainer = document.getElementById('color-options');
-            const list = Array.isArray(colors) && colors.length ? colors : window.staffProducts.getColors(currentProduct.product_id);
+            const list = Array.isArray(colors) && colors.length ? colors : window.studentProducts.getColors(currentProduct.product_id);
             
             colorContainer.innerHTML = list.map(color => {
-                const texturePath = window.staffProducts.getColorSwatchTexture(color);
-                const colorDisplayName = window.staffProducts.getColorDisplayName(color);
+                const texturePath = window.studentProducts.getColorSwatchTexture(color);
+                const colorDisplayName = window.studentProducts.getColorDisplayName(color);
                 return `
                     <div class="color-option-wrapper" data-color="${color}">
                         <div class="color-option" onclick="selectColor('${color}')">
@@ -519,7 +578,7 @@
         
         function populateSizes() {
             const sizeContainer = document.getElementById('size-options');
-            const sizes = window.staffProducts.getAvailableSizes(currentProduct.product_id);
+            const sizes = window.studentProducts.getAvailableSizes();
             
             sizeContainer.innerHTML = sizes.map(size => {
                 return `<div class="size-option" data-size="${size}" onclick="selectSize('${size}')">${size}</div>`;
@@ -539,14 +598,12 @@
             });
             
             // Update main image
-            const imagePath = window.staffProducts.getImagePath(currentProduct.product_id, color);
+            const imagePath = window.studentProducts.getImagePath(currentProduct.product_id, color, null, CURRENT_CLASS);
             const mainImage = document.getElementById('product-main-image');
-            mainImage.style.display = 'block';
             mainImage.src = imagePath;
             mainImage.alt = `${currentProduct.name} in ${color}`;
             mainImage.onerror = function() {
-                // Hide image if it fails to load instead of showing orange shirt
-                this.style.display = 'none';
+                this.src = '../../assets/img/Sport-Grey.png';
             };
             
             // Update add to cart button state
@@ -571,71 +628,10 @@
             updateAddToCartButton();
         }
         
-        function initializeEmbroideryOption() {
-            const optionGroup = document.getElementById('embroidery-option-group');
-            const checkbox = document.getElementById('embroidery-checkbox');
-
-            if (!optionGroup || !checkbox || !currentProduct) {
-                return;
-            }
-
-            supportsEmbroidery = !EMBROIDERY_EXCLUDED_PRODUCTS.has(currentProduct.product_id);
-
-            if (!supportsEmbroidery) {
-                optionGroup.style.display = 'none';
-                return;
-            }
-
-            embroiderySelected = true;
-            checkbox.checked = true;
-            optionGroup.style.display = 'block';
-
-            checkbox.addEventListener('change', () => {
-                embroiderySelected = checkbox.checked;
-                updateEmbroideryMessaging();
-                updatePrice();
-            });
-
-            updateEmbroideryMessaging();
-        }
-
-        function updateEmbroideryMessaging() {
-            const labelText = document.getElementById('embroidery-label-text');
-            const note = document.getElementById('embroidery-note');
-
-            if (!labelText || !note) return;
-
-            if (embroiderySelected) {
-                labelText.textContent = 'Include embroidery (standard)';
-                note.textContent = 'Embroidery is included on staff apparel at no additional cost.';
-            } else {
-                labelText.textContent = 'No embroidery (-$10 per item)';
-                note.textContent = 'Removing embroidery saves $10 per item.';
-            }
-        }
-
-        function getAdjustedPrice(basePrice) {
-            if (supportsEmbroidery && !embroiderySelected) {
-                return Math.max(basePrice - EMBROIDERY_DISCOUNT, 0);
-            }
-            return basePrice;
-        }
-
         function updatePrice() {
             if (selectedSize && currentProduct) {
-                const basePrice = window.staffProducts.getPriceForSize(currentProduct.product_id, selectedSize);
-                const adjustedPrice = getAdjustedPrice(basePrice);
-                const priceElement = document.getElementById('product-price');
-
-                if (!priceElement) return;
-
-                let priceHtml = window.staffProducts.formatPrice(adjustedPrice);
-
-                if (supportsEmbroidery && !embroiderySelected) {
-                    priceHtml += ` <span class="price-note">($10 savings without embroidery)</span>`;
-                }
-
-                priceElement.innerHTML = priceHtml;
+                const price = window.studentProducts.getPriceForSize(currentProduct.product_id, selectedSize, CURRENT_CLASS);
+                document.getElementById('product-price').textContent = window.studentProducts.formatPrice(price);
             }
         }
         
@@ -673,7 +669,7 @@
         function getProductTotalQuantityInCart() {
             if (!currentProduct) return 0;
             
-            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_staff';
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
             const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
             const productIdPrefix = currentProduct.product_id;
             
@@ -690,7 +686,7 @@
         function getColorQuantityInCart(color) {
             if (!currentProduct) return 0;
             
-            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_staff';
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
             const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
             
             // Sum all items that match this product and color
@@ -738,21 +734,18 @@
             if (!selectedColor || !selectedSize || !currentProduct) return;
             
             const quantity = parseInt(document.getElementById('quantity-input').value) || 1;
-            const basePrice = window.staffProducts.getPriceForSize(currentProduct.product_id, selectedSize);
-            const price = getAdjustedPrice(basePrice);
-            const embroideryDescription = supportsEmbroidery ? (embroiderySelected ? 'Embroidery' : 'No Embroidery') : '';
+            const price = window.studentProducts.getPriceForSize(currentProduct.product_id, selectedSize, CURRENT_CLASS);
             
             const productToAdd = {
                 id: `${currentProduct.product_id}-${selectedSize}-${selectedColor.replace(/\s+/g, '-')}`,
                 name: currentProduct.name,
-                description: `${currentProduct.name} - ${selectedColor}, Size ${selectedSize}${embroideryDescription ? `, ${embroideryDescription}` : ''}`,
+                description: `${currentProduct.name} - ${selectedColor}, Size ${selectedSize}`,
                 price: price,
-                image: window.staffProducts.getImagePath(currentProduct.product_id, selectedColor),
+                image: window.studentProducts.getImagePath(currentProduct.product_id, selectedColor),
                 quantity: quantity,
                 selections: {
                     size: selectedSize,
-                    color: selectedColor,
-                    ...(supportsEmbroidery ? { embroidery: embroiderySelected ? 'with-embroidery' : 'no-embroidery' } : {})
+                    color: selectedColor
                 }
             };
             
@@ -774,6 +767,15 @@
             }
         });
         
+        // Quantity +/- buttons
+        function adjustQty(delta) {
+            const input = document.getElementById('quantity-input');
+            const val = Math.max(1, (parseInt(input.value) || 1) + delta);
+            input.value = val;
+            selectedQuantity = val;
+            updateColorQuantityBadges();
+        }
+
         // Quantity input validation
         document.getElementById('quantity-input').addEventListener('change', function() {
             const value = parseInt(this.value);
@@ -784,7 +786,7 @@
         
         // Listen for cart updates from other pages/tabs
         window.addEventListener('storage', function(e) {
-            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_staff';
+            const cartKey = window.WACTC?.getCartKey() || 'wactc_cart_student';
             if (e.key === cartKey) {
                 updateColorQuantityBadges();
                 updateAddToCartButton();
@@ -801,7 +803,10 @@
         document.addEventListener('DOMContentLoaded', loadProduct);
         
         // Set site context for staff section
-        sessionStorage.setItem('wactc_site_context', 'staff');
+        sessionStorage.setItem('wactc_site_context', 'student');
     </script>
 </body>
 </html>
+
+
+

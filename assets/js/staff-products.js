@@ -67,9 +67,10 @@ class StaffProducts {
             'W809': '../assets/img/previews/W809_F_Ultramarine-Blue_F.png',
             'LW809': '../assets/img/previews/LW809_F_Storm-Grey_F.png',
             'CS418': '../assets/img/previews/CS418_M_Light-Grey_F.png',
-            'CS419': '../assets/img/previews/CS419_M_Charcoal_F.png'
+            'CS419': '../assets/img/previews/CS419_M_Charcoal_F.png',
+            'WACTC-CAP': '../assets/img/previews/WACTC-CAP_M_Black_F.png'
         };
-        
+
         return previewImages[productId] || null;
     }
 
@@ -85,9 +86,10 @@ class StaffProducts {
             'W809': 'Ultramarine Blue',
             'LW809': 'Storm Grey',
             'CS418': 'Light Grey',
-            'CS419': 'Charcoal'
+            'CS419': 'Charcoal',
+            'WACTC-CAP': 'Black'
         };
-        
+
         return preferredColors[productId] || null;
     }
 
@@ -210,8 +212,14 @@ class StaffProducts {
         return results.filter(r => r.exists).map(r => r.color);
     }
 
-    // Get available sizes
-    getAvailableSizes() {
+    // Get available sizes — returns product-specific sizes if defined, otherwise standard apparel sizes
+    getAvailableSizes(productId = null) {
+        if (productId) {
+            const product = this.getProduct(productId);
+            if (product && Array.isArray(product.sizes) && product.sizes.length) {
+                return product.sizes;
+            }
+        }
         return ['S', 'M', 'L', 'XL', '2XL', '3XL'];
     }
 

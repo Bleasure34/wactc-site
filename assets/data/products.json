@@ -23,6 +23,18 @@
         "3X": 16.0
       },
       "class": "Auto",
+      "is_active": false
+    },
+    {
+      "product_id": "PA_W809",
+      "name": "Auto Mechanics Short Sleeve Buttondown",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 28.0,
+        "2X": 30.0,
+        "3X": 31.0
+      },
+      "class": "Auto",
       "is_active": true
     },
     {
@@ -71,6 +83,18 @@
         "3X": 28.0
       },
       "class": "EPS",
+      "is_active": true
+    },
+    {
+      "product_id": "S508",
+      "name": "EMT Buttondown",
+      "colors": "Royal/ Classic Navy",
+      "pricing": {
+        "S-XL": 25.0,
+        "2X": 27.0,
+        "3X": 28.0
+      },
+      "class": "EMT",
       "is_active": true
     },
     {
@@ -203,6 +227,114 @@
         "3X": 53.0
       },
       "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "18500",
+      "name": "SM Hooded Sweatshirt",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 24.0,
+        "2X": 26.0,
+        "3X": 27.0
+      },
+      "class": "Sports Medicine",
+      "is_active": true
+    },
+    {
+      "product_id": "8000",
+      "name": "Health Occupations Short Sleeve Tee",
+      "colors": "Black, Sport Grey",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "18000",
+      "name": "Health Occupations Crewneck Sweatshirt",
+      "colors": "Black, Sport Grey",
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 22.0,
+        "3X": 23.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "18500",
+      "name": "Health Occupations Hooded Sweatshirt",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 24.0,
+        "2X": 26.0,
+        "3X": 27.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "A4N3142",
+      "name": "Health Occupations Poly Shirt",
+      "colors": "Black, Silver",
+      "pricing": {
+        "S-XL": 15.0,
+        "2X": 17.0,
+        "3X": 18.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "F110",
+      "name": "Health Occupations Men's Fleece Jacket",
+      "colors": "Gusty Grey",
+      "pricing": {
+        "S-XL": 50.0,
+        "2X": 52.0,
+        "3X": 53.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "L110",
+      "name": "Health Occupations Ladies Fleece Jacket",
+      "colors": "Gusty Grey",
+      "pricing": {
+        "S-XL": 50.0,
+        "2X": 52.0,
+        "3X": 53.0
+      },
+      "class": "Health Occupations",
+      "is_active": true
+    },
+    {
+      "product_id": "8000",
+      "name": "Culinary Arts Short Sleeve Tee",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 13.0,
+        "2X": 15.0,
+        "3X": 16.0
+      },
+      "class": "Culinary",
+      "is_active": true
+    },
+    {
+      "product_id": "18000",
+      "name": "Culinary Arts Crewneck Sweatshirt",
+      "colors": "Black",
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 22.0,
+        "3X": 23.0
+      },
+      "class": "Culinary",
       "is_active": true
     },
     {
@@ -347,6 +479,32 @@
         "3X": 18.0
       },
       "class": "Welding",
+      "is_active": true
+    },
+    {
+      "product_id": "WACTC-CAP",
+      "name": "WACTC Baseball Cap",
+      "colors": "Black",
+      "sizes": ["S/M", "L/XL"],
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 20.0,
+        "3X": 20.0
+      },
+      "class": "Staff",
+      "is_active": true
+    },
+    {
+      "product_id": "WACTC-CAP",
+      "name": "WACTC Baseball Cap",
+      "colors": "Black",
+      "sizes": ["S/M", "L/XL"],
+      "pricing": {
+        "S-XL": 20.0,
+        "2X": 20.0,
+        "3X": 20.0
+      },
+      "class": "WACTC",
       "is_active": true
     },
     {
