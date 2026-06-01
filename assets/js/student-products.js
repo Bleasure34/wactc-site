@@ -14,12 +14,16 @@ class StudentProducts {
         'Carpentry': 'carpentry',
         'Collision Repair': 'collision-repair',
         'Computer Science': 'computer-science',
+        'Culinary': 'culinary',
         'Electrical Occupations': 'electrical-occupations',
+        'EMT': 'emt',
         'EPS': 'eps',
+        'Health Occupations': 'health-occupations',
         'Machine Shop': 'machine-shop',
         'Masonry': 'masonry',
         'Networking': 'networking',
         'Sports Medicine': 'sports-med',
+        'WACTC': 'wactc-gear',
         'Welding': 'welding',
         'ARET': 'aret'
     };
