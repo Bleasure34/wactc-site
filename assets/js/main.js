@@ -25,13 +25,21 @@
         }
     }
     
+    // Global handler: hide broken product card images so the gray background
+    // never shimmers indefinitely — fires on any img.product-img that 404s
+    document.addEventListener('error', function(e) {
+        if (e.target.tagName === 'IMG' && e.target.classList.contains('product-img')) {
+            e.target.style.display = 'none';
+        }
+    }, true);
+
     // Initialize the application
     function init() {
         // Skip animations if user prefers reduced motion
         if (prefersReducedMotion()) {
             document.documentElement.classList.add('no-motion');
         }
-        
+
         // Initialize smooth scrolling for anchor links
         initSmoothScrolling();
         

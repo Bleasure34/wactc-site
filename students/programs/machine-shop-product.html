@@ -376,7 +376,7 @@
                 
                 <div id="product-container" class="product-container" style="display: none;">
                     <div class="product-image-container">
-                        <img id="product-main-image" src="../../assets/img/Sport-Grey.png" alt="Product preview" class="product-main-image" width="500" height="500" loading="eager" decoding="async" fetchpriority="high">
+                        <img id="product-main-image" src="" alt="Product preview" class="product-main-image" width="500" height="500" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                     
                     <div class="product-details">
@@ -533,7 +533,7 @@
             document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for machine shop students.`;
             
             // Get only colors with available image previews
-            const colors = await window.studentProducts.getAvailableColorsWithImages(currentProduct.product_id, CURRENT_CLASS);
+            const colors = window.studentProducts.getColors(currentProduct.product_id, CURRENT_CLASS);
             const urlColor = getColorFromUrl();
             
             // Select default color ASAP to paint the main image early
