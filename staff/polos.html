@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polos - Staff Apparel - WACTC</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .product-image { height: 280px; overflow: hidden; border-radius: 8px; position: relative; }
+        .product-img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.35); object-position: center; background-color: #fff; }
+        .product-card { display: flex; flex-direction: column; height: 100%; position: relative; overflow: visible; cursor: pointer; }
+        .staff-grid { overflow: visible !important; }
+        .product-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem; }
+        .product-content h3 { margin-bottom: .5rem; }
+        .product-content p { margin-bottom: 1rem; flex-grow: 1; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="../" class="logo"><img src="../assets/img/logo.png" alt="WACTC Logo" width="75" height="75"></a>
+                <a href="../cart/" class="cart-link">Cart</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Polos</h1>
+                <p>Staff apparel options:</p>
+                <a href="index.html" class="btn btn-primary" style="margin-top: .5rem;">Back to Categories</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="staff-grid" id="category-grid">
+                <div class="loading-message"><p>Loading products...</p></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 WACTC. All rights reserved.</p>
+                <p>Contact: <a href="mailto:tntmfg@comcast.net">tntmfg@comcast.net</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/staff-products.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        const CATEGORY_IDS = ['CS418', 'CS419'];
+        async function loadProducts() {
+            const grid = document.getElementById('category-grid');
+            let attempts = 0;
+            while (!window.staffProducts || window.staffProducts.products.size === 0) {
+                if (attempts++ >= 50) {
+                    grid.innerHTML = '<div class="error-message"><p>Unable to load products. Please refresh.</p></div>';
+                    return;
+                }
+                await new Promise(r => setTimeout(r, 100));
+            }
+            const products = CATEGORY_IDS.map(id => window.staffProducts.getProduct(id)).filter(Boolean);
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="error-message"><p>No products available.</p></div>';
+                return;
+            }
+            grid.innerHTML = products.map(product => {
+                const preferredColor = window.staffProducts.getPreferredColor(product.product_id);
+                const imagePath = preferredColor
+                    ? window.staffProducts.getListingPreviewImage(product.product_id, preferredColor)
+                    : '../assets/img/Orange.png';
+                return `<div class="product-card">
+                    <div class="product-image">
+                        <img src="${imagePath}" alt="${product.name}" class="product-img" onerror="this.src='../assets/img/Orange.png'">
+                    </div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <button class="btn btn-primary" onclick="window.location.href='product.html?id=${product.product_id}'" style="background-color:var(--wactc-secondary);border-color:var(--wactc-secondary);">View Product</button>
+                    </div>
+                </div>`;
+            }).join('');
+            grid.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.btn-primary')) return;
+                    const btn = this.querySelector('.btn-primary');
+                    if (btn) btn.click();
+                });
+            });
+        }
+        document.addEventListener('DOMContentLoaded', loadProducts);
+        sessionStorage.setItem('wactc_site_context', 'staff');
+    </script>
+</body>
+</html>

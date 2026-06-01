@@ -19,15 +19,14 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            object-position: center;
             transform: scale(1.35);
-            transition: transform 0.3s ease;
+            object-position: top center;
+            
+            
             background-color: #ffffff;
         }
         
-        .product-card:hover .product-img {
-            transform: scale(1.05);
-        }
+        
         
         /* Ensure consistent card heights */
         .product-card {
@@ -111,7 +110,7 @@
             max-height: 98vh;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             transform: scale(0.9);
-            transition: transform 0.3s ease;
+            
             position: relative;
             overflow: visible;
         }
@@ -346,7 +345,7 @@
                     <div class="product-card">
                         <div class="product-image">
                             <img src="${imagePath}" alt="${product.name}" class="product-img" 
-                                 loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')" loading="lazy">
+                                 loading="eager" loading="eager">
                         </div>
                         <div class="color-options-trigger" data-product-id="${product.product_id}">
                             View Color Options

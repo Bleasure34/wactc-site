@@ -487,9 +487,9 @@
       "colors": "Black",
       "sizes": ["S/M", "L/XL"],
       "pricing": {
-        "S-XL": 20.0,
-        "2X": 20.0,
-        "3X": 20.0
+        "S-XL": 30.0,
+        "2X": 30.0,
+        "3X": 30.0
       },
       "class": "Staff",
       "is_active": true

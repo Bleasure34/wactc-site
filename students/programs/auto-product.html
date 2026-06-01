@@ -28,7 +28,7 @@
             max-width: 500px;
             height: 500px;
             object-fit: contain;
-            object-position: center 60%;
+            object-position: top center 60%;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             background-color: #f8f9fa;
@@ -532,17 +532,17 @@
             document.getElementById('product-title').textContent = currentProduct.name;
             document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for automotive technician students.`;
             
-            // Get only colors with available image previews
-            const colors = await window.studentProducts.getAvailableColorsWithImages(currentProduct.product_id, CURRENT_CLASS);
+            // Get all colors (no async image existence check)
+            const colors = window.studentProducts.getColors(currentProduct.product_id, CURRENT_CLASS);
             const urlColor = getColorFromUrl();
-            
+
             // Select default color ASAP to paint the main image early
             if (urlColor && colors.includes(urlColor)) {
                 selectColor(urlColor);
             } else if (colors.length > 0) {
                 selectColor(colors[0]);
             }
-            
+
             // Populate colors and sizes
             populateColors(colors);
             populateSizes();
