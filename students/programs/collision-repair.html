@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="../../assets/css/styles.css">
     <style>
         .product-image { height: 280px; overflow: hidden; border-radius: 8px; position: relative; }
-        .product-img { width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.35); transition: transform 0.3s ease; background-color: #ffffff; }
-        .product-card:hover .product-img { transform: scale(1.05); }
+        .product-img { width: 100%; height: 100%; object-fit: contain;
+            transform: scale(1.35); object-position: top center;   background-color: #ffffff; }
+        
         .product-card { display: flex; flex-direction: column; height: 100%; position: relative; overflow: visible; cursor: pointer; }
         .staff-grid { overflow: visible !important; }
         .product-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem; }
@@ -19,7 +20,7 @@
         .color-options-trigger:hover { background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%); color: var(--wactc-secondary); }
         .color-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .color-modal-overlay.show { opacity: 1; visibility: visible; }
-        .color-modal { background: white; border-radius: 16px; padding: 0; max-width: 90vw; max-height: 98vh; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); transform: scale(0.9); transition: transform 0.3s ease; position: relative; overflow: visible; }
+        .color-modal { background: white; border-radius: 16px; padding: 0; max-width: 90vw; max-height: 98vh; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); transform: scale(0.9);  position: relative; overflow: visible; }
         .color-modal-overlay.show .color-modal { transform: scale(1); }
         .color-modal-header { background: linear-gradient(135deg, var(--wactc-secondary) 0%, #8b2a2d 50%, var(--wactc-secondary) 100%); color: white; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
         .color-modal-title { font-size: 1.25rem; font-weight: 700; margin: 0; }
@@ -91,7 +92,7 @@
             grid.innerHTML = products.map(product => {
                 const colors = window.studentProducts.getColors(product.product_id, PROGRAM_CLASS);
                 const imagePath = colors.length > 0 ? window.studentProducts.getPreviewImagePath(product.product_id, colors[0], PROGRAM_CLASS) : '../../assets/img/Sport-Grey.png';
-                return `<div class="product-card"><div class="product-image"><img src="${imagePath}" alt="${product.name}" class="product-img" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')"></div><div class="color-options-trigger" data-product-id="${product.product_id}">View Color Options</div><div class="product-content"><h3>${product.name}</h3><p>Professional collision repair apparel</p><button class="btn btn-primary" onclick="event.stopPropagation();window.location.href='collision-repair-product.html?id=${product.product_id}'" style="background-color: var(--wactc-secondary); border-color: var(--wactc-secondary);">View Product</button></div></div>`;
+                return `<div class="product-card"><div class="product-image"><img src="${imagePath}" alt="${product.name}" class="product-img" loading="eager"></div><div class="color-options-trigger" data-product-id="${product.product_id}">View Color Options</div><div class="product-content"><h3>${product.name}</h3><p>Professional collision repair apparel</p><button class="btn btn-primary" onclick="event.stopPropagation();window.location.href='collision-repair-product.html?id=${product.product_id}'" style="background-color: var(--wactc-secondary); border-color: var(--wactc-secondary);">View Product</button></div></div>`;
             }).join('');
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {

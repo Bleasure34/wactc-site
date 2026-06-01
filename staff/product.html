@@ -223,7 +223,7 @@
             font-weight: 500;
             min-width: 50px;
             text-align: center;
-            color: var(--text);
+            color: #1a1a1a;
         }
         
         .size-option:hover,
@@ -366,10 +366,9 @@
                             <div id="embroidery-option-group" class="option-group" style="display: none;">
                                 <label class="option-label">Embroidery</label>
                                 <label class="embroidery-option" for="embroidery-checkbox">
-                                    <input type="checkbox" id="embroidery-checkbox" checked>
-                                    <span id="embroidery-label-text">Include embroidery (standard)</span>
+                                    <input type="checkbox" id="embroidery-checkbox">
+                                    <span id="embroidery-label-text">Embroidery (+$10 per item)</span>
                                 </label>
-                                <p id="embroidery-note" class="embroidery-note">Embroidery is included on staff apparel at no additional cost.</p>
                             </div>
                             
                             <div class="quantity-group">
@@ -410,7 +409,7 @@
         let selectedColor = null;
         let selectedSize = null;
         let selectedQuantity = 1;
-        let embroiderySelected = true;
+        let embroiderySelected = false;
         let supportsEmbroidery = false;
 
         const EMBROIDERY_DISCOUNT = 10;
@@ -471,19 +470,13 @@
             document.getElementById('product-title').textContent = currentProduct.name;
             document.getElementById('product-description').textContent = `Professional ${currentProduct.name.toLowerCase()} for staff members.`;
             
-            // Get only colors with available image previews
-            const colors = await window.staffProducts.getAvailableColorsWithImages(currentProduct.product_id);
+            const allColors = window.staffProducts.getColors(currentProduct.product_id);
             const urlColor = getColorFromUrl();
-            
-            // Select default color ASAP to paint the main image early
-            if (urlColor && colors.includes(urlColor)) {
-                selectColor(urlColor);
-            } else if (colors.length > 0) {
-                selectColor(colors[0]);
-            }
-            
+            const defaultColor = (urlColor && allColors.includes(urlColor)) ? urlColor : allColors[0];
+            if (defaultColor) selectColor(defaultColor);
+
             // Populate colors and sizes
-            populateColors(colors);
+            populateColors(allColors);
             populateSizes();
             
             // Select default size
@@ -545,8 +538,7 @@
             mainImage.src = imagePath;
             mainImage.alt = `${currentProduct.name} in ${color}`;
             mainImage.onerror = function() {
-                // Hide image if it fails to load instead of showing orange shirt
-                this.style.display = 'none';
+                this.src = '../assets/img/Orange.png';
             };
             
             // Update add to cart button state
@@ -586,8 +578,8 @@
                 return;
             }
 
-            embroiderySelected = true;
-            checkbox.checked = true;
+            embroiderySelected = false;
+            checkbox.checked = false;
             optionGroup.style.display = 'block';
 
             checkbox.addEventListener('change', () => {
@@ -600,18 +592,7 @@
         }
 
         function updateEmbroideryMessaging() {
-            const labelText = document.getElementById('embroidery-label-text');
-            const note = document.getElementById('embroidery-note');
-
-            if (!labelText || !note) return;
-
-            if (embroiderySelected) {
-                labelText.textContent = 'Include embroidery (standard)';
-                note.textContent = 'Embroidery is included on staff apparel at no additional cost.';
-            } else {
-                labelText.textContent = 'No embroidery (-$10 per item)';
-                note.textContent = 'Removing embroidery saves $10 per item.';
-            }
+            // Label is static — no dynamic text change needed
         }
 
         function getAdjustedPrice(basePrice) {
@@ -630,11 +611,6 @@
                 if (!priceElement) return;
 
                 let priceHtml = window.staffProducts.formatPrice(adjustedPrice);
-
-                if (supportsEmbroidery && !embroiderySelected) {
-                    priceHtml += ` <span class="price-note">($10 savings without embroidery)</span>`;
-                }
-
                 priceElement.innerHTML = priceHtml;
             }
         }
