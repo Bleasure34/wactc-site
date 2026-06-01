@@ -14,16 +14,12 @@ class StudentProducts {
         'Carpentry': 'carpentry',
         'Collision Repair': 'collision-repair',
         'Computer Science': 'computer-science',
-        'Culinary': 'culinary',
         'Electrical Occupations': 'electrical-occupations',
-        'EMT': 'emt',
         'EPS': 'eps',
-        'Health Occupations': 'health-occupations',
         'Machine Shop': 'machine-shop',
         'Masonry': 'masonry',
         'Networking': 'networking',
         'Sports Medicine': 'sports-med',
-        'WACTC': 'wactc-gear',
         'Welding': 'welding',
         'ARET': 'aret'
     };
@@ -272,14 +268,8 @@ class StudentProducts {
         return pricing['S-XL'] || 0; // Default to S-XL pricing
     }
 
-    // Get available sizes — returns product-specific sizes if defined, otherwise standard apparel sizes
-    getAvailableSizes(productId = null, className = null) {
-        if (productId) {
-            const product = this.getProduct(productId, className);
-            if (product && Array.isArray(product.sizes) && product.sizes.length) {
-                return product.sizes;
-            }
-        }
+    // Get available sizes
+    getAvailableSizes() {
         return ['S', 'M', 'L', 'XL', '2XL', '3XL'];
     }
 

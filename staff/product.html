@@ -487,7 +487,7 @@
             populateSizes();
             
             // Select default size
-            const sizes = window.staffProducts.getAvailableSizes(currentProduct.product_id);
+            const sizes = window.staffProducts.getAvailableSizes();
             if (sizes.length > 0) {
                 selectSize(sizes[0]);
             }
@@ -519,7 +519,7 @@
         
         function populateSizes() {
             const sizeContainer = document.getElementById('size-options');
-            const sizes = window.staffProducts.getAvailableSizes(currentProduct.product_id);
+            const sizes = window.staffProducts.getAvailableSizes();
             
             sizeContainer.innerHTML = sizes.map(size => {
                 return `<div class="size-option" data-size="${size}" onclick="selectSize('${size}')">${size}</div>`;
