@@ -1,5 +1,6 @@
 // WACTC Student Products - Local Catalog Integration
 // Loads product data from assets/data/products.json (no Supabase)
+// classToProgram map: HVAC, Auto, Carpentry, Collision Repair, Computer Science, Culinary, Electrical Occupations, EMT, EPS, Health Occupations, Machine Shop, Masonry, Networking, Sports Medicine, WACTC, Welding, ARET
 
 class StudentProducts {
     constructor() {
